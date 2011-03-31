@@ -1,1 +1,104 @@
-/home/trytond-1.8.2/trytond/modules/ekd_budget/xml/ekd_doc_request_view.xml
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+        <record id="view_documents_request_form_budget" model="ir.ui.view">
+            <field name="model">ekd.document.head.request</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="ekd_documents.view_documents_request_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <data>
+                        <xpath
+                            expr="/form"
+                            position="inside">
+                            <field name="budget_ref" invisible="1"/>
+                            <field name="budget" invisible="1"/>
+                        </xpath>
+                    </data>
+                ]]>
+            </field>
+        </record>
+
+        <record id="view_documents_request_line_form_budget" model="ir.ui.view">
+            <field name="model">ekd.document.line.request</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="ekd_documents.view_documents_request_line_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <data>
+                        <xpath
+                            expr="/form/group[@id=&quot;product&quot;]/label[@name=&quot;analytic&quot;]"
+                            position="before">
+                            <field colspan="6" name="budget_ref" />
+                            <label name="budget_line"/>
+                            <field colspan="5" name="budget_line"/>
+                        </xpath>
+                        <xpath
+                            expr="/form/group[@id=&quot;gr_amount&quot;]/label[@name=&quot;amount_request&quot;]"
+                            position="before">
+                            <label name="amount_budget"/>
+                            <field name="amount_budget"/>
+                        </xpath>
+                    </data>
+                ]]>
+            </field>
+        </record>
+
+        <record id="view_documents_request_tree_budget" model="ir.ui.view">
+            <field name="model">ekd.document.line.request</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="ekd_documents.view_documents_request_line_tree"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <data>
+                        <xpath
+                            expr="/tree/field[@name=&quot;amount_request&quot;]"
+                            position="before">
+                            <field name="amount_budget"/>
+                            <field name="budget_line" tree_invisible="1" />
+                            <field name="budget_ref" tree_invisible="1"/>
+                        </xpath>
+                    </data>
+                ]]>
+            </field>
+        </record>
+
+<!-->
+        <record id="view_documents_request_form_budget" model="ir.ui.view">
+            <field name="model">ekd.document.head.request</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="ekd_documents.view_documents_request_form"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <data>
+                        <xpath
+                            expr="/form/notebook/page/field[@name=&quot;lines&quot;]/form/group[@id=&quot;product&quot;]/label[@name=&quot;analytic&quot;]"
+                            position="before">
+                            <label name="budget_line"/>
+                            <field name="budget_line"/>
+                        </xpath>
+                        <xpath
+                            expr="/form/notebook/page/field[@name=&quot;lines&quot;]/form/group[@id=&quot;gr_amount&quot;]/label[@name=&quot;amount_request&quot;]"
+                            position="before">
+                            <label name="amount_budget"/>
+                            <field name="amount_budget"/>
+                        </xpath>
+                        <xpath
+                            expr="/form/notebook/page/field[@name=&quot;lines&quot;]/tree/field[@name=&quot;amount_request&quot;]"
+                            position="before">
+                            <field name="amount_budget"/>
+                            <field name="budget_line" tree_invisible="1" />
+                            <field name="budget_ref" tree_invisible="1"/>
+                        </xpath>
+                        <xpath
+                            expr="/form/notebook/page/field[@name=&quot;lines&quot;]"
+                            position="after">
+                            <field name="budget_ref" tree_invisible="1" />
+                        </xpath>
+                    </data>
+                ]]>
+            </field>
+        </record>
+<-->
+    </data>
+</tryton>

@@ -1,1 +1,161 @@
-/home/trytond-1.8.2/trytond/modules/ekd_budget/xml/ekd_doc_budget.xml
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data>
+
+        <record model="res.group" id="group_account_cash_admin">
+                    <field name="name">Documents of Cash Administration</field>
+        </record>
+
+        <record model="res.group" id="group_account_cash">
+                    <field name="name">Documents of Cash</field>
+        </record>
+
+    <!--
+    =======================
+    Tree and  Form  for The Documents
+    =======================
+    -->
+
+        <record id="view_documents_cash_form" model="ir.ui.view">
+            <field name="model">ekd.document.head.cash</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <form string="Document Cash Order">
+                    <notebook>
+                        <page string="Cash Order" id="doc">
+                            <group col="10" colspan="10" id="head">
+                                <label name="company" />
+                                <field name="company" select="1"/>
+                                <label name="template_cash" />
+                                <field name="template_cash" widget="selection" select="1"/>
+                                <label name="number_our"/>
+                                <field name="number_our" select="1"/>
+                                <label name="date_account" />
+                                <field name="date_account" select="1"/>
+                            </group>
+                            <group colspan="6" col="8" id="note">
+                                <label name="cash_account"/>
+                                <field colspan="1"  name="cash_account" widget="selection" select="1"/>
+                                <label name="corr_account" />
+                                <field colspan="1" name="corr_account" select="1"/>
+                                <label name="from_to_party"/>
+                                <field colspan="2" name="from_to_party" select="1"/>
+                                <newline/>
+                                <label name="name" string="Description"/>
+                                <field colspan="6" name="name" fill="0" spell="company_lang"/>
+                            </group>
+                            <group col="4" colspan="4" id="spec">
+                                <group col="2" colspan="2" id="spec">
+                                    <label name="document_base_ref" />
+                                    <field name="document_base_ref" select="1"/>
+<!-->
+                                    <label name="corr2_account" />
+                                    <field name="corr2_account" select="1"/>
+                                    <label name="analytic" />
+                                    <field name="analytic" select="1"/>
+<-->
+                                </group>
+                                <group col="2" colspan="2" id="gr_amount">
+                                    <label name="amount"/>
+                                    <field name="amount"/>
+                                    <group col="2" colspan="2" id="gr_state">
+                                        <label name="state"/>
+                                        <field name="state" select="1"/>
+                                        <group col="2" colspan="2" id="buttons">
+                                            <button string="Post" name="button_post" type="object" 
+                                                    states="{'invisible': Not(Equal(Eval('state'), 'draft'))}"/>
+                                            <button string="Draft" name="button_draft" type="object" 
+                                                    states="{'invisible': Not(Equal(Eval('state'), 'posted'))}"/>
+                                            <button string="Restore" name="button_restore" type="object" 
+                                                    states="{'invisible': Not(Equal(Eval('state'), 'deleted))}"/>
+                                        </group>
+                                        <group col="2" colspan="2" id="btn_entries">
+                                            <button name="button_entries_create" string="Create Entries" type="object"/>
+                                            <button name="button_entries_correct" string="Correct Entries" type="object"/>
+                                        </group>
+                                    </group>
+                                </group>
+                                <group colspan="6" id="note">
+                                    <separator  colspan="6" string="Note" id="id_note"/>
+                                    <field name="note" spell="company_lang"/>
+                                </group>
+                                <field name="currency_digits" invisible="1"/>
+                                <field name="from_party" invisible="1"/>
+                                <field name="to_party" invisible="1"/>
+                            </group>
+                        </page>
+                        <page string="Entries" id="move">
+                            <field name="move" mode="form" widget="one2many" select="1"/>
+                        </page>
+                    </notebook>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record id="view_documents_cash_tree" model="ir.ui.view">
+            <field name="model">ekd.document.head.cash</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Party">
+                    <field name="template_cash" select="1"/>
+                    <field name="number_our" select="1"/>
+                    <field name="date_account" select="1"/>
+                    <field name="cash_account" select="1"/>
+                    <field name="from_to_party" select="1"/>
+<!-->
+                    <field name="income"/>
+                    <field name="expense"/>
+<-->
+                    <field name="name" />
+                    <field name="note" />
+                    <field name="amount" select="1"/>
+                    <field name="currency"/>
+                    <field name="cash_account" tree_invisible="1"/>
+                    <field name="currency_digits" tree_invisible="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_documents_cash_form">
+            <field name="name">Document Cash</field>
+            <field name="res_model">ekd.document.head.cash</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_documents_cash_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="view_documents_cash_tree"/>
+            <field name="act_window" ref="act_documents_cash_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_documents_cash_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="view_documents_cash_form"/>
+            <field name="act_window" ref="act_documents_cash_form"/>
+        </record>
+
+        <menuitem 
+            name="List of Documents Cash" 
+            action="act_documents_cash_form" id="menu_documents_cash_form" parent="ekd_documents.menu_documents"/>
+
+        <record model="ir.model.access" id="access_account_cash">
+            <field name="model" search="[('model', '=', 'ekd.document.head.cash')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.model.access" id="access_account_cash_admin">
+            <field name="model" search="[('model', '=', 'ekd.document.head.cash')]"/>
+            <field name="group" ref="ekd_account.group_account_cash_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>

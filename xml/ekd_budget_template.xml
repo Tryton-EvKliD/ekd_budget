@@ -1,1 +1,106 @@
-/home/trytond-1.8.2/trytond/modules/ekd_budget/xml/ekd_budget_template.xml
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <menuitem name="Template Budget" parent="menu_budget" sequence="20"
+            groups="group_budget,group_budget_admin"
+            id="menu_budget_tmp"/>
+
+        <menuitem name="Template Budget Revenue" parent="menu_budget_tmp"
+            id="menu_budget_tmp_revenue" sequence="30"/>
+        <menuitem name="Template Budget Expense" parent="menu_budget_tmp"
+            id="menu_budget_tmp_expense" sequence="40"/>
+
+        <record model="ir.ui.view" id="view_budget_template_form">
+            <field name="model">ekd.account.budget.template</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Type Template">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="active"/>
+                    <field name="active"/>
+                    <field name="lines" >
+                        <tree>
+                            <field name="name"/>
+                            <field name="type_line"/>
+                            <field name="sequence"/>
+                            <field name="code"/>
+                            <field name="analytic"/>
+                            <field name="parent"/>
+                            <field name="childs"/>
+                            <field name="product_uom"/>
+                            <field name="currency"/>
+                        </tree>
+                        <form>
+                            <field name="name"/>
+                            <field name="type_line"/>
+                            <field name="sequence"/>
+                            <field name="code"/>
+                            <field name="analytic"/>
+                            <field name="parent"/>
+                            <field name="childs"/>
+                            <field name="product_uom"/>
+                            <field name="currency"/>
+                        </form>
+                    </field>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_budget_template_tree">
+            <field name="model">ekd.account.budget.template</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Budget Templates">
+                    <field name="code" select="1"/>
+                    <field name="name" select="1"/>
+                    <field name="sequence"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_budget_template_form">
+            <field name="name">Budget Templates</field>
+            <field name="res_model">ekd.account.budget.template</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_template_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="view_budget_template_tree"/>
+            <field name="act_window" ref="act_budget_template_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_template_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="view_budget_template_form"/>
+            <field name="act_window" ref="act_budget_template_form"/>
+        </record>
+
+        <menuitem parent="menu_budget_tmp"
+            action="act_budget_template_form"
+            id="menu_account_template_tree"/>
+
+        <record model="ir.model.access" id="access_budget_template">
+            <field name="model" search="[('model', '=', 'ekd.account.budget.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_budget_template_admin">
+            <field name="model" search="[('model', '=', 'ekd.account.budget.template')]"/>
+            <field name="group" ref="ekd_budget.group_budget_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+    </data>
+</tryton>

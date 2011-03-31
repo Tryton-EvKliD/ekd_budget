@@ -1,1 +1,69 @@
-/home/trytond-1.8.2/trytond/modules/ekd_budget/xml/ekd_budget_type.xml
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="view_budget_type_form">
+            <field name="model">ekd.account.budget.type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Type Template">
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="direct_budget"/>
+                    <field name="direct_budget"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_budget_type_tree">
+            <field name="model">ekd.account.budget.type</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Budget Templates">
+                    <field name="code" select="1"/>
+                    <field name="name" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_budget_type_tree">
+            <field name="name">Budget Type</field>
+            <field name="res_model">ekd.account.budget.type</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_budget_type_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="view_budget_type_tree"/>
+            <field name="act_window" ref="act_budget_type_tree"/>
+        </record>
+        <menuitem parent="menu_budget_configuration"
+            action="act_budget_type_tree"
+            id="menu_account_type_tree"/>
+
+        <record model="ir.model.access" id="access_budget_type">
+            <field name="model" search="[('model', '=', 'ekd.account.budget.type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_budget_type_admin">
+            <field name="model" search="[('model', '=', 'ekd.account.budget.type')]"/>
+            <field name="group" ref="group_budget_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+
+    </data>
+</tryton>

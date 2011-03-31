@@ -1,0 +1,416 @@
+type,name,res_id,src,value,fuzzy
+error,account.budget,0,The code must be unique!,Код должен быть уникальным,0
+error,account.budget.line,0,The code must be unique!,Код должен быть уникальным,0
+error,account.budget.line,0,The sequence in the budget must be unique!,Код строки должен быть уникальным,0
+error,account.budget.line,0,The sequence must be unique!,Нумерация должна быть уникально,0
+error,account.budget.template,0,The code must be unique!,Код должен быть уникальным,0
+error,account.budget.template.line,0,The code must be unique!,Код должен быть уникальным,0
+error,account.budget.type,0,The code must be unique!,Код должен быть уникальным,0
+error,ekd.account.budget,0,The code must be unique!,Код должен быть уникальным,0
+error,ekd.account.budget.line,0,The sequence in the budget must be unique!,Код строки должен быть уникальным,0
+error,ekd.account.budget.template,0,The code must be unique!,Код должен быть уникальным,0
+error,ekd.account.budget.template.line,0,The code must be unique!,Код должен быть уникальным,0
+error,ekd.account.budget.type,0,The code must be unique!,Код должен быть уникальным,0
+field,"account.budget,active",0,Active,Активный,0
+field,"account.budget,childs",0,Children,Подчиненый,0
+field,"account.budget,code",0,Code,Код,0
+field,"account.budget,company",0,Company,Учетная организация,0
+field,"account.budget,currency",0,Currency,Валюта,0
+field,"account.budget,date_end",0,Expected End,Дата окончания,0
+field,"account.budget,date_start",0,Starting Date,Дата начала,0
+field,"account.budget,direct_budget",0,Direct Budget,Направление бюджета,0
+field,"account.budget,end_date",0,Expected End,Дата окончания,0
+field,"account.budget,line_change",0,Budget Line Change,,0
+field,"account.budget,lines",0,Lines Budget,Строки бюджета,0
+field,"account.budget,name",0,Name,Наименование,0
+field,"account.budget,parent",0,Parent,Основной,0
+field,"account.budget,project",0,Project,Учет проектов,0
+field,"account.budget,rec_name",0,Name,Наименование,0
+field,"account.budget,start_date",0,Starting Date,Дата начала,0
+field,"account.budget,state",0,State,Состояние,0
+field,"account.budget,total_budget",0,Total Budget,Бюджет всего,0
+field,"account.budget,total_expense",0,Total expense,Всего расход,0
+field,"account.budget,total_income",0,Total Income,Всего приход,0
+field,"account.budget,total_marga",0,Marga,Маржа,0
+field,"account.budget,type_budget",0,Type Budget,Тип бюджета,0
+field,"account.budget.line,amount",0,Amount,Сумма,0
+field,"account.budget.line,amount_change",0,Amount Change,сумма изменения,0
+field,"account.budget.line,analytic",0,Analytic Account,Статья,0
+field,"account.budget.line,budget",0,Budget,Бюджет,0
+field,"account.budget.line,childs",0,Children,Подчиненый,0
+field,"account.budget.line,code",0,Code SubTotal,Формула вычисления - Пример: (010+030) * 420 / 100,0
+field,"account.budget.line,currency",0,Currency,Валюта,0
+field,"account.budget.line,direct_line",0,Direct Budget,Тип строки,0
+field,"account.budget.line,income",0,Income Budget,Доходный бюджет,0
+field,"account.budget.line,kind",0,Kind,Тип,0
+field,"account.budget.line,line_change",0,Budget Line Change,,0
+field,"account.budget.line,name",0,Name,Наименование,0
+field,"account.budget.line,number",0,Amount or Quantity,Сумма или Кол-во,0
+field,"account.budget.line,parent",0,Parent,Основной,0
+field,"account.budget.line,price_unit",0,Price unit,Цена за ед.,0
+field,"account.budget.line,product",0,Product,ТМЦ,0
+field,"account.budget.line,quantity",0,Quantity,Кол-во,0
+field,"account.budget.line,rec_name",0,Name,Наименование,0
+field,"account.budget.line,sequence",0,Code Line,Код строки,0
+field,"account.budget.line,state",0,State,Состояние,0
+field,"account.budget.line,type_line",0,Type line,Тип строки,0
+field,"account.budget.line,unit_digits",0,Unit Digits,Группа цифр,0
+field,"account.budget.line,uom",0,Unit,Ед.изм.,0
+field,"account.budget.line.change,amount",0,Amount,Сумма,0
+field,"account.budget.line.change,analytic",0,Analytic Account,Статья,0
+field,"account.budget.line.change,budget",0,Budget,Бюджет,0
+field,"account.budget.line.change,budget_line",0,Budget Line,Строка бюджета,0
+field,"account.budget.line.change,date_change",0,Date Change,Дата изменения,0
+field,"account.budget.line.change,direct_line",0,Direct Budget,Тип строки,0
+field,"account.budget.line.change,employee_confirm",0,Employee Confirmed,Подтвержденно,0
+field,"account.budget.line.change,income",0,Income Budget,Доходный бюджет,0
+field,"account.budget.line.change,kind",0,Kind,Тип,0
+field,"account.budget.line.change,name",0,Name,Наименование,0
+field,"account.budget.line.change,note",0,Note,Комментарий,0
+field,"account.budget.line.change,price_unit",0,Price unit,Цена за ед.,0
+field,"account.budget.line.change,product",0,Product,ТМЦ,0
+field,"account.budget.line.change,quantity",0,Quantity,Кол-во,0
+field,"account.budget.line.change,rec_name",0,Name,Наименование,0
+field,"account.budget.line.change,state",0,State,Состояние,0
+field,"account.budget.line.change,type_line",0,Type Line,Резервный счет,0
+field,"account.budget.line.change,unit_digits",0,Unit Digits,Группа цифр,0
+field,"account.budget.line.change,uom",0,Unit,Ед.изм.,0
+field,"account.budget.move,budget_enlarge",0,Budget EnLarge,Бюджет (увеличения),0
+field,"account.budget.move,budget_reduce",0,Budget Reduce,Бюджет (уменьшения),0
+field,"account.budget.move,lines",0,Lines Budget Move,Строки изменения бюджета,0
+field,"account.budget.move,move_date",0,Move Date,Дата изменения,0
+field,"account.budget.move,name",0,Name,Наименование,0
+field,"account.budget.move,post_date",0,Post Date,Учетная дата,0
+field,"account.budget.move,rec_name",0,Name,Наименование,0
+field,"account.budget.move,state",0,Type line,Тип строки,0
+field,"account.budget.move.line,account_enlarge",0,Account Enlarge,Счет увеличения,0
+field,"account.budget.move.line,account_reduce",0,Account Reduce,Счет уменьшения,0
+field,"account.budget.move.line,amount",0,Amount,Сумма,0
+field,"account.budget.move.line,currency",0,Currency,Валюта,0
+field,"account.budget.move.line,description",0,Description,Описание,0
+field,"account.budget.move.line,move",0,Budget Move,Изменение в бюджете,0
+field,"account.budget.move.line,quantity",0,Quantity,Кол-во,0
+field,"account.budget.move.line,rec_name",0,Name,Наименование,0
+field,"account.budget.move.line,unit_digits",0,Unit Digits,Группа цифр,0
+field,"account.budget.move.line,uom",0,Unit,Ед.изм.,0
+field,"account.budget.template,active",0,Active,Активный,0
+field,"account.budget.template,code",0,Code,Код,0
+field,"account.budget.template,lines",0,Lines Budget Template,Строки шаблона бюджета,0
+field,"account.budget.template,name",0,Name,Наименование,0
+field,"account.budget.template,rec_name",0,Name,Наименование,0
+field,"account.budget.template,sequence",0,Sequence,Последовательность,0
+field,"account.budget.template.line,analytic",0,Analytic Account,Аналитический счет,0
+field,"account.budget.template.line,childs",0,Children,Подчиненый,0
+field,"account.budget.template.line,code",0,Code,Код,0
+field,"account.budget.template.line,currency",0,Currency,Валюта,0
+field,"account.budget.template.line,name",0,Name,Наименование,0
+field,"account.budget.template.line,parent",0,Parent,Основной,0
+field,"account.budget.template.line,product_uom",0,Unit,Ед.изм.,0
+field,"account.budget.template.line,rec_name",0,Name,Наименование,0
+field,"account.budget.template.line,sequence",0,Sequence,Последовательность,0
+field,"account.budget.template.line,template",0,Template Budget,Шаблоны бюджетов,0
+field,"account.budget.template.line,type_line",0,Type line,Тип строки,0
+field,"account.budget.type,active",0,Active,Активный,0
+field,"account.budget.type,childs",0,Children,Подчиненый,0
+field,"account.budget.type,code",0,Code,Код ,0
+field,"account.budget.type,company",0,Company,Учетные организации,0
+field,"account.budget.type,direct_budget",0,Direct Budget,Направление бюджета,0
+field,"account.budget.type,name",0,Name,Наименование,0
+field,"account.budget.type,parent",0,Parent,Основной,0
+field,"account.budget.type,rec_name",0,Name,Наименование,0
+field,"account.budget.type,type",0,Type,Тип,0
+field,"documents.document.requestcash,budget",0,Budget,Бюджет,0
+field,"documents.document.requestcash,budget_ref",0,Budget,Бюджет,0
+field,"documents.requestcash.line,budget_line",0,Budget Line,Строка бюджета,0
+field,"documents.requestcash.line,budget_ref",0,Budget,Бюджет,0
+field,"ekd.account.budget,active",0,Active,Действующий,0
+field,"ekd.account.budget,childs",0,Children,Подчиненый,0
+field,"ekd.account.budget,code",0,Code,Код,0
+field,"ekd.account.budget,company",0,Company,Учет.орг.,0
+field,"ekd.account.budget,currency",0,Currency,Валюта,0
+field,"ekd.account.budget,direct_budget",0,Direct Budget,Направление бюджета,0
+field,"ekd.account.budget,end_date",0,Expected End,Дата окончания,0
+field,"ekd.account.budget,line_change",0,Budget Line Change,,0
+field,"ekd.account.budget,lines",0,Lines Budget,Строки бюджета,0
+field,"ekd.account.budget,name",0,Name,Наименование,0
+field,"ekd.account.budget,parent",0,Parent,Основной,0
+field,"ekd.account.budget,rec_name",0,Name,Наименование,0
+field,"ekd.account.budget,start_date",0,Starting Date,Работает с,0
+field,"ekd.account.budget,state",0,State,Статус,0
+field,"ekd.account.budget,total_budget",0,Total Budget,Бюджет всего,0
+field,"ekd.account.budget,total_income",0,Total Income,Всего приход,0
+field,"ekd.account.budget,total_marga",0,Marga,Маржа,0
+field,"ekd.account.budget,type_budget",0,Type Budget,Тип бюджета,0
+field,"ekd.account.budget.configure,active",0,Active,Действующий,0
+field,"ekd.account.budget.configure,code",0,Code,Код,0
+field,"ekd.account.budget.configure,company",0,Company,Код,0
+field,"ekd.account.budget.configure,delimiter_article",0,Delimiter Article,,0
+field,"ekd.account.budget.configure,delimiter_between",0,Delimiter Between Section and Article,,0
+field,"ekd.account.budget.configure,delimiter_section",0,Delimiter Section,,0
+field,"ekd.account.budget.configure,number_char_article",0,Number of characters per article,,0
+field,"ekd.account.budget.configure,number_char_section",0,Number of characters in the sectionb,,0
+field,"ekd.account.budget.configure,rec_name",0,Name,Наименование,0
+field,"ekd.account.budget.configure,type_coding",0,Type Coding Sections,,0
+field,"ekd.account.budget.line,amount",0,Amount,Сумма,0
+field,"ekd.account.budget.line,amount_change",0,Amount Change,сумма изменения,0
+field,"ekd.account.budget.line,analytic",0,Analytic Account,Статья,0
+field,"ekd.account.budget.line,budget",0,Budget,Бюджет,0
+field,"ekd.account.budget.line,childs",0,Children,Подчиненый,0
+field,"ekd.account.budget.line,code",0,Budget Item,Статья,0
+field,"ekd.account.budget.line,code_section",0,Budget Section,,0
+field,"ekd.account.budget.line,currency",0,Currency,Валюта,0
+field,"ekd.account.budget.line,direct_line",0,Direct Budget,Направление бюджета,0
+field,"ekd.account.budget.line,income",0,Income Budget,Доходный бюджет,0
+field,"ekd.account.budget.line,kind",0,Kind,Тип,0
+field,"ekd.account.budget.line,line_change",0,Budget Line Change,,0
+field,"ekd.account.budget.line,name",0,Name,Наименование,0
+field,"ekd.account.budget.line,parent",0,Parent,Основной,0
+field,"ekd.account.budget.line,price_unit",0,Price unit,Цена за ед.,0
+field,"ekd.account.budget.line,product",0,Product,ТМЦ,0
+field,"ekd.account.budget.line,quantity",0,Quantity,Кол-во,0
+field,"ekd.account.budget.line,rec_name",0,Name,Наименование,0
+field,"ekd.account.budget.line,sequence",0,Code Line,Код строки,0
+field,"ekd.account.budget.line,state",0,State,Статус,0
+field,"ekd.account.budget.line,type_line",0,Type line,Тип строки,0
+field,"ekd.account.budget.line,unit_digits",0,Unit Digits,цифры ед.изм.,0
+field,"ekd.account.budget.line,uom",0,Unit,Ед.изм.,0
+field,"ekd.account.budget.line.change,amount",0,Amount,Сумма,0
+field,"ekd.account.budget.line.change,analytic",0,Analytic Account,Статья,0
+field,"ekd.account.budget.line.change,budget",0,Budget,Бюджет,0
+field,"ekd.account.budget.line.change,budget_line",0,Budget Line,Строка бюджета,0
+field,"ekd.account.budget.line.change,date_change",0,Date Change,Дата изменения,0
+field,"ekd.account.budget.line.change,direct_line",0,Direct Budget,Направление бюджета,0
+field,"ekd.account.budget.line.change,employee_confirm",0,Employee Confirmed,Подтвержденно,0
+field,"ekd.account.budget.line.change,income",0,Income Budget,Доходный бюджет,0
+field,"ekd.account.budget.line.change,kind",0,Kind,Тип,0
+field,"ekd.account.budget.line.change,name",0,Name,Наименование,0
+field,"ekd.account.budget.line.change,note",0,Note,Комментарий,0
+field,"ekd.account.budget.line.change,price_unit",0,Price unit,Цена за ед.,0
+field,"ekd.account.budget.line.change,product",0,Product,ТМЦ,0
+field,"ekd.account.budget.line.change,quantity",0,Quantity,Кол-во,0
+field,"ekd.account.budget.line.change,rec_name",0,Name,Наименование,0
+field,"ekd.account.budget.line.change,state",0,State,Статус,0
+field,"ekd.account.budget.line.change,type_line",0,Type Line,Тип строки,0
+field,"ekd.account.budget.line.change,unit_digits",0,Unit Digits,цифры ед.изм.,0
+field,"ekd.account.budget.line.change,uom",0,Unit,Ед.изм.,0
+field,"ekd.account.budget.move,budget_enlarge",0,Budget EnLarge,Бюджет (увеличения),0
+field,"ekd.account.budget.move,budget_reduce",0,Budget Reduce,Бюджет (уменьшения),0
+field,"ekd.account.budget.move,lines",0,Lines Budget Move,Строки изменения бюджета,0
+field,"ekd.account.budget.move,move_date",0,Move Date,Дата изменения,0
+field,"ekd.account.budget.move,name",0,Name,Наименование,0
+field,"ekd.account.budget.move,post_date",0,Post Date,Учетная дата,0
+field,"ekd.account.budget.move,rec_name",0,Name,Наименование,0
+field,"ekd.account.budget.move,state",0,Type line,Тип строки,0
+field,"ekd.account.budget.move.line,account_enlarge",0,Account Enlarge,Счет увеличения,0
+field,"ekd.account.budget.move.line,account_reduce",0,Account Reduce,Счет уменьшения,0
+field,"ekd.account.budget.move.line,amount",0,Amount,Сумма,0
+field,"ekd.account.budget.move.line,currency",0,Currency,Валюта,0
+field,"ekd.account.budget.move.line,description",0,Description,Описание,0
+field,"ekd.account.budget.move.line,move",0,Budget Move,Изменение в бюджете,0
+field,"ekd.account.budget.move.line,quantity",0,Quantity,Кол-во,0
+field,"ekd.account.budget.move.line,rec_name",0,Name,Наименование,0
+field,"ekd.account.budget.move.line,unit_digits",0,Unit Digits,цифры ед.изм.,0
+field,"ekd.account.budget.move.line,uom",0,Unit,Ед.изм.,0
+field,"ekd.account.budget.template,active",0,Active,Действующий,0
+field,"ekd.account.budget.template,code",0,Code,Код,0
+field,"ekd.account.budget.template,lines",0,Lines Budget Template,Строки шаблона бюджета,0
+field,"ekd.account.budget.template,name",0,Name,Наименование,0
+field,"ekd.account.budget.template,rec_name",0,Name,Наименование,0
+field,"ekd.account.budget.template,sequence",0,Sequence,Последовательность,0
+field,"ekd.account.budget.template.line,analytic",0,Analytic Account,Статья,0
+field,"ekd.account.budget.template.line,childs",0,Children,Подчиненый,0
+field,"ekd.account.budget.template.line,code",0,Code,Код,0
+field,"ekd.account.budget.template.line,currency",0,Currency,Валюта,0
+field,"ekd.account.budget.template.line,name",0,Name,Наименование,0
+field,"ekd.account.budget.template.line,parent",0,Parent,Основной,0
+field,"ekd.account.budget.template.line,product_uom",0,Unit,Ед.изм.,0
+field,"ekd.account.budget.template.line,rec_name",0,Name,Наименование,0
+field,"ekd.account.budget.template.line,sequence",0,Sequence,Последовательность,0
+field,"ekd.account.budget.template.line,template",0,Template Budget,Шаблоны бюджетов,0
+field,"ekd.account.budget.template.line,type_line",0,Type line,Тип строки,0
+field,"ekd.account.budget.type,active",0,Active,Действующий,0
+field,"ekd.account.budget.type,childs",0,Children,Подчиненый,0
+field,"ekd.account.budget.type,code",0,Code,Код,0
+field,"ekd.account.budget.type,company",0,Company,Учет.орг.,0
+field,"ekd.account.budget.type,direct_budget",0,Direct Budget,Направление бюджета,0
+field,"ekd.account.budget.type,name",0,Name,Наименование,0
+field,"ekd.account.budget.type,parent",0,Parent,Основной,0
+field,"ekd.account.budget.type,rec_name",0,Name,Наименование,0
+field,"ekd.account.budget.type,type",0,Type,Тип ставки,0
+field,"ekd.account.move.line.budget,amount",0,Amount,Сумма,0
+field,"ekd.account.move.line.budget,budget_line",0,Budget Line,Строка бюджета,0
+field,"ekd.account.move.line.budget,move_line",0,Move Line,,0
+field,"ekd.account.move.line.budget,quantity",0,Quantity,Кол-во,0
+field,"ekd.account.move.line.budget,rec_name",0,Name,Наименование,0
+field,"ekd.company.department,budget",0,Department Budget,,0
+field,"ekd.document.head.request,budget",0,Budget,Бюджет,0
+field,"ekd.document.head.request,budget_ref",0,Budget,Бюджет,0
+field,"ekd.document.line.request,amount_budget",0,Amount in Budget,Сумма в бюджете,0
+field,"ekd.document.line.request,budget_line",0,Budget Line,Строка бюджета,0
+field,"ekd.document.line.request,budget_ref",0,Budget,Бюджет,0
+field,"ekd.document.request,budget",0,Budget,Бюджет,0
+field,"ekd.document.request,budget_ref",0,Budget,Бюджет,0
+field,"ekd.document.request,document_ref",0,Base,Основание,0
+field,"ekd.document.request,lines",0,Lines Request,Строки заявки,0
+field,"ekd.document.request,rec_name",0,Name,Наименование,0
+help,"ekd.account.budget.line,code",0,Code Item,,0
+help,"ekd.account.budget.line,code_section",0,Code Section,,0
+model,"account.budget,name",0,account.budget,Главный бюджет,0
+model,"account.budget.line,name",0,General Budget Lines,Главный бюджет,0
+model,"account.budget.line.change,name",0,General Budget Lines Changes,,0
+model,"account.budget.move,name",0,Budget Move,Изменение в бюджете,0
+model,"account.budget.move.line,name",0,Budget Move,Изменение в бюджете,0
+model,"account.budget.template,name",0,Budget Template,Шаблон бюджета,0
+model,"account.budget.template.line,name",0,Lines Budget Template,Строки шаблона бюджета,0
+model,"account.budget.type,name",0,Type Budget,Тип бюджета,0
+model,"ekd.account.budget,name",0,General Budget,Главный бюджет,0
+model,"ekd.account.budget.configure,name",0,Configuration Budget,,0
+model,"ekd.account.budget.line,name",0,General Budget Lines,Главный бюджет,0
+model,"ekd.account.budget.line.change,name",0,General Budget Lines Changes,,0
+model,"ekd.account.budget.move,name",0,Budget Move,Изменение в бюджете,0
+model,"ekd.account.budget.move.line,name",0,Budget Move,Изменение в бюджете,0
+model,"ekd.account.budget.template,name",0,Budget Template,Шаблон бюджета,0
+model,"ekd.account.budget.template.line,name",0,Lines Budget Template,Строки шаблона бюджета,0
+model,"ekd.account.budget.type,name",0,Type Budget,Тип бюджета,0
+model,"ekd.account.move.line.budget,name",0,Reference Move with Budget Line,,0
+model,"ekd.document.request,name",0,ekd.document.request,,0
+model,"ir.action,name",act_budget_form, All Budgets,Бюджеты,0
+model,"ir.action,name",act_budget_template_form,Budget Templates,Шаблоны бюджетов,0
+model,"ir.action,name",act_budget_tree,Tree Budgets,Структура бюджетов,0
+model,"ir.action,name",act_budget_type_tree,Budget Type,Тип бюджета,0
+model,"ir.action,name",report_budget,Budget,Бюджет,0
+model,"ir.dictions,value",request_ref_budget,Budget,Бюджет,0
+model,"ir.dictions,value",type_analytic_budget,Budget,Бюджет,0
+model,"ir.dictions,value",type_analytic_budget_line,Budget Item,Статья,0
+model,"ir.ui.menu,name",menu_account_template_tree,Budget Templates,Шаблоны бюджетов,0
+model,"ir.ui.menu,name",menu_account_tree,Tree Budgets,Структура бюджетов,0
+model,"ir.ui.menu,name",menu_account_type_tree,Budget Type,Тип бюджетов,0
+model,"ir.ui.menu,name",menu_budget,Budget Management,Бюджеты,0
+model,"ir.ui.menu,name",menu_budget_configuration,Configuration,Конфигурация,0
+model,"ir.ui.menu,name",menu_budget_expense,Budget Expense,,0
+model,"ir.ui.menu,name",menu_budget_form, All Budgets,Бюджеты,0
+model,"ir.ui.menu,name",menu_budget_reporting,Reporting,Отчетность,0
+model,"ir.ui.menu,name",menu_budget_revenue,Budget Revenue,Бюджеты (Доходы),0
+model,"ir.ui.menu,name",menu_budget_tmp,Template Budget,Шаблоны бюджетов,0
+model,"ir.ui.menu,name",menu_budget_tmp_expense,Template Budget Expense,,0
+model,"ir.ui.menu,name",menu_budget_tmp_revenue,Template Budget Revenue,Шаблоны беджетов (Доходы),0
+model,"ir.ui.menu,name",menu_general_budget,General Budget,Главный бюджет,0
+model,"ir.ui.menu,name",menu_processing,Processing,Обработка,0
+model,"res.group,name",group_budget,Budget,Бюджет,0
+model,"res.group,name",group_budget_admin,Budget Administration,Управление бюджетами,0
+selection,"account.budget,direct_budget",0,Expense,Расходный,0
+selection,"account.budget,direct_budget",0,Income,Доход,0
+selection,"account.budget,direct_budget",0,Income and Expense,Доходный и Расходный,0
+selection,"account.budget,direct_budget",0,expense,Расход,0
+selection,"account.budget,state",0,Completed,Выполнен,0
+selection,"account.budget,state",0,Deleted,Удалено,0
+selection,"account.budget,state",0,Draft,Черновик,0
+selection,"account.budget,state",0,Performed,Исполняется,0
+selection,"account.budget.line,direct_line",0,Expense,Расходный,0
+selection,"account.budget.line,direct_line",0,Income,Приход,0
+selection,"account.budget.line,direct_line",0,Total Percentage,Всего (Процент),0
+selection,"account.budget.line,direct_line",0,Total Summa,Всего (Сумма),0
+selection,"account.budget.line,direct_line",0,expense,Расход,0
+selection,"account.budget.line,kind",0,Amount,Сумма,0
+selection,"account.budget.line,kind",0,Line,Строка,0
+selection,"account.budget.line,kind",0,Percentage,Процент,0
+selection,"account.budget.line,kind",0,Quantity,Кол-во,0
+selection,"account.budget.line,kind",0,Quantity and Amount,Кол-во и сумма,0
+selection,"account.budget.line,kind",0,Section,Раздел,0
+selection,"account.budget.line,state",0,Completed,Выполнен,0
+selection,"account.budget.line,state",0,Deleted,Удалено,0
+selection,"account.budget.line,state",0,Draft,Черновик,0
+selection,"account.budget.line,state",0,Performed,Исполняется,0
+selection,"account.budget.line,type_line",0,Line,Строка,0
+selection,"account.budget.line,type_line",0,Section,Раздел,0
+selection,"account.budget.line,type_line",0,Subtotal,Подитог,0
+selection,"account.budget.line.change,state",0,Confirmed,Подтвержденно,0
+selection,"account.budget.line.change,state",0,Deleted,Удалено,0
+selection,"account.budget.line.change,state",0,Draft,Черновик,0
+selection,"account.budget.move,state",0,Confirmed,Подтвержденно,0
+selection,"account.budget.move,state",0,Draft,Черновик,0
+selection,"account.budget.move,state",0,Validated,Подтверждено,0
+selection,"account.budget.template.line,type_line",0,Line,Строка,0
+selection,"account.budget.template.line,type_line",0,Section,Раздел,0
+selection,"account.budget.type,direct_budget",0,Expense,Расходный,0
+selection,"account.budget.type,direct_budget",0,Income,Доход,0
+selection,"account.budget.type,direct_budget",0,expense,Расход,0
+selection,"account.budget.type,type",0,Expense,Расходный,0
+selection,"account.budget.type,type",0,Project,Учет проектов,0
+selection,"account.budget.type,type",0,Running,Выполняющиеся,0
+selection,"account.budget.type,type",0,expense,Расход,0
+selection,"ekd.account.budget,direct_budget",0,Income,Приход,0
+selection,"ekd.account.budget,direct_budget",0,Income and expense,Доходный и Расходный,0
+selection,"ekd.account.budget,direct_budget",0,expense,Расход,0
+selection,"ekd.account.budget,state",0,Completed,Выполнен,0
+selection,"ekd.account.budget,state",0,Deleted,Удалено,0
+selection,"ekd.account.budget,state",0,Draft,Черновик,0
+selection,"ekd.account.budget,state",0,Performed,Исполняется,0
+selection,"ekd.account.budget.configure,type_coding",0,XXX.XXX,,0
+selection,"ekd.account.budget.configure,type_coding",0,XXXXXX,,0
+selection,"ekd.account.budget.configure,type_coding",0,[XXX][XXX],,0
+selection,"ekd.account.budget.line,direct_line",0,Income,Приход,0
+selection,"ekd.account.budget.line,direct_line",0,Total Percentage,Всего (Процент),0
+selection,"ekd.account.budget.line,direct_line",0,Total Summa,Всего (Сумма),0
+selection,"ekd.account.budget.line,direct_line",0,expense,Расход,0
+selection,"ekd.account.budget.line,kind",0,Amount,Сумма,0
+selection,"ekd.account.budget.line,kind",0,Percentage,Процент,0
+selection,"ekd.account.budget.line,kind",0,Quantity,Кол-во,0
+selection,"ekd.account.budget.line,kind",0,Quantity and Amount,Кол-во и сумма,0
+selection,"ekd.account.budget.line,state",0,Completed,Выполнен,0
+selection,"ekd.account.budget.line,state",0,Deleted,Удалено,0
+selection,"ekd.account.budget.line,state",0,Draft,Черновик,0
+selection,"ekd.account.budget.line,state",0,Performed,Исполняется,0
+selection,"ekd.account.budget.line,type_line",0,Line,Строка,0
+selection,"ekd.account.budget.line,type_line",0,Section,Раздел,0
+selection,"ekd.account.budget.line,type_line",0,Subtotal,Подитог,0
+selection,"ekd.account.budget.line.change,state",0,Confirmed,Подтвержденно,0
+selection,"ekd.account.budget.line.change,state",0,Deleted,Удалено,0
+selection,"ekd.account.budget.line.change,state",0,Draft,Черновик,0
+selection,"ekd.account.budget.move,state",0,Confirmed,Подтвержденно,0
+selection,"ekd.account.budget.move,state",0,Draft,Черновик,0
+selection,"ekd.account.budget.move,state",0,Validated,Подтверждено,0
+selection,"ekd.account.budget.template.line,type_line",0,Line,Строка,0
+selection,"ekd.account.budget.template.line,type_line",0,Section,Раздел,0
+selection,"ekd.account.budget.type,direct_budget",0,Income,Приход,0
+selection,"ekd.account.budget.type,direct_budget",0,expense,Расход,0
+selection,"ekd.account.budget.type,type",0,Project,Учет проектов,0
+selection,"ekd.account.budget.type,type",0,Running,Выполняющиеся,0
+selection,"ekd.account.budget.type,type",0,expense,Расход,0
+view,account.budget,0,Account,Учетный счет,0
+view,account.budget,0,Budgets,Бюджеты,0
+view,account.budget,0,Calculate,Пересчитать,0
+view,account.budget,0,Change Budget,,0
+view,account.budget,0,Childs Budgets,Подчиненый бюджет,0
+view,account.budget,0,Completed,Выполнен,0
+view,account.budget,0,Draft,Черновик,0
+view,account.budget,0,General,Основной,0
+view,account.budget,0,Line Budget,Строка бюджета,0
+view,account.budget,0,Lines Bidget,Строки бюджета,0
+view,account.budget,0,Lines Budget,Строки бюджета,0
+view,account.budget,0,Restore,Восстановить,0
+view,account.budget,0,Run,Выполняется,0
+view,account.budget,0,State,Состояние,0
+view,account.budget.line,0,Lines Budget,Строки бюджета,0
+view,account.budget.template,0,Account Type Template,Шаблон типа учетного счета,0
+view,account.budget.template,0,Budget Templates,Шаблоны бюджета,0
+view,account.budget.type,0,Account Type Template,Шаблон типа учетного счета,0
+view,account.budget.type,0,Budget Templates,Шаблоны бюджета,0
+view,ekd.account.budget,0,Account,Учетный счет,0
+view,ekd.account.budget,0,Budgets,Бюджеты,0
+view,ekd.account.budget,0,Calculate,Пересчитать,0
+view,ekd.account.budget,0,Change Budget,,0
+view,ekd.account.budget,0,Completed,Выполнен,0
+view,ekd.account.budget,0,Draft,Черновик,0
+view,ekd.account.budget,0,General,Основной,0
+view,ekd.account.budget,0,Line Budget,Строка бюджета,0
+view,ekd.account.budget,0,Lines Bidget,Строки бюджета,0
+view,ekd.account.budget,0,Lines Budget,Строки бюджета,0
+view,ekd.account.budget,0,Restore,Восстановить,0
+view,ekd.account.budget,0,Run,Выполняется,0
+view,ekd.account.budget,0,State,Статус,0
+view,ekd.account.budget.line,0,Lines Budget,Строки бюджета,0
+view,ekd.account.budget.template,0,Account Type Template,Шаблон типа учетного счета,0
+view,ekd.account.budget.template,0,Budget Templates,Шаблоны бюджетов,0
+view,ekd.account.budget.type,0,Account Type Template,Шаблон типа учетного счета,0
+view,ekd.account.budget.type,0,Budget Templates,Шаблоны бюджетов,0

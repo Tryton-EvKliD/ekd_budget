@@ -1,1 +1,477 @@
-/home/trytond-1.8.2/trytond/modules/ekd_budget/xml/ekd_budget_move.xml
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="res.group" id="group_budget">
+            <field name="name">Budget</field>
+        </record>
+        <record model="res.group" id="group_budget_admin">
+            <field name="name">Budget Administration</field>
+        </record>
+        <record model="res.user" id="res.user_admin">
+            <field name="groups"
+                eval="[('add', ref('group_budget')), ('add', ref('group_budget_admin'))]"/>
+        </record>
+        <menuitem name="Budget Management" id="menu_budget" sequence="20"
+            groups="group_budget,group_budget_admin"
+            icon="tryton-calculator"/>
+        <menuitem name="Configuration" parent="menu_budget"
+            id="menu_budget_configuration" groups="group_budget_admin"
+            sequence="10" icon="tryton-preferences"/>
+        <menuitem name="General Budget" parent="menu_budget"
+            id="menu_general_budget"/>
+        <menuitem name="Budget Revenue" parent="menu_general_budget"
+            id="menu_budget_revenue" sequence="30"/>
+        <menuitem name="Budget Expense" parent="menu_general_budget"
+            id="menu_budget_expense" sequence="40"/>
+        <menuitem name="Processing" parent="menu_budget"
+            id="menu_processing" sequence="50"/>
+        <menuitem name="Reporting" parent="menu_budget"
+            id="menu_budget_reporting" sequence="60"/>
+
+        <record model="ir.ui.view" id="view_budget_template_form">
+            <field name="model">ekd.account.budget.template</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account Type Template">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="sequence"/>
+                    <field name="sequence"/>
+                    <label name="parent"/>
+                    <field name="parent"/>
+                    <newline/>
+                    <label name="display_balance"/>
+                    <field name="display_balance"/>
+                    <newline/>
+                    <label name="balance_sheet"/>
+                    <field name="balance_sheet"/>
+                    <newline/>
+                    <label name="income_statement"/>
+                    <field name="income_statement"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_budget_template_tree">
+            <field name="model">ekd.account.budget.template</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Budget Templates">
+                    <field name="name" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_budget_template_tree">
+            <field name="name">Budget Templates</field>
+            <field name="res_model">ekd.account.budget.template</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_budget_template_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="view_budget_template_tree"/>
+            <field name="act_window" ref="act_budget_template_tree"/>
+        </record>
+        <menuitem parent="menu_budget"
+            action="act_budget_template_tree"
+            id="menu_account_type_template_tree"/>
+
+        <record model="ir.ui.view" id="view_budget_form">
+            <field name="model">ekd.account.budget</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Account" col="6">
+                    <label name="name"/>
+                    <field name="name"/>
+                    <label name="code"/>
+                    <field name="code"/>
+                    <label name="active"/>
+                    <field name="active" xexpand="0" width="100"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_budget_tree">
+            <field name="model">ekd.account.budget</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Budgets">
+                    <field name="rec_name" select="1"/>
+                    <field name="company" select="1"/>
+                    <field name="type" select="1"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_budget_form">
+            <field name="name">Budget</field>
+            <field name="res_model">ekd.account.budget</field>
+            <field name="view_type">form</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="view_budget_tree"/>
+            <field name="act_window" ref="act_budget_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_budget_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="view_budget_form"/>
+            <field name="act_window" ref="act_budget_form"/>
+        </record>
+        <menuitem parent="menu_budget"
+            action="act_budget_form" id="menu_budget_form"/>
+        <record model="ir.action.act_window" id="act_budget_tree">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree"/>
+            <field name="act_window" ref="act_account_tree"/>
+        </record>
+        <menuitem parent="menu_account_form"
+            action="act_account_tree" id="menu_account_tree"/>
+        <record model="ir.ui.view" id="account_view_tree2">
+            <field name="model">account.account</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Accounts">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="debit"/>
+                    <field name="credit"/>
+                    <field name="balance"/>
+                    <field name="currency"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_tree2">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.account</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('parent', '=', False)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_tree2_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_view_tree2"/>
+            <field name="act_window" ref="act_account_tree2"/>
+        </record>
+        <record model="ir.action.wizard" id="act_open_chart_account">
+            <field name="name">Open Chart of Accounts</field>
+            <field name="wiz_name">account.account.open_chart_account</field>
+        </record>
+        <menuitem parent="menu_charts" action="act_open_chart_account"
+            icon="tryton-tree" id="menu_open_chart_account"/>
+        <record model="ir.model.access" id="access_account">
+            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_account_account_admin">
+            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_account">
+            <field name="model" search="[('model', '=', 'account.account')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account1">
+            <field name="field" search="[('name', '=', 'company'), ('model.model', '=', 'account.account')]"/>
+            <field name="operator">in</field>
+            <field name="operand">User/Current Companies</field>
+            <field name="rule_group" ref="rule_group_account"/>
+        </record>
+
+        <record model="ir.ui.view" id="open_chart_account_init_view_form">
+            <field name="model">account.account.open_chart_account.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Chart of Accounts" col="2">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="print_general_ledger_init_view_form">
+            <field name="model">account.account.print_general_ledger.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Print General Ledger">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <label name="empty_account"/>
+                    <field name="empty_account"/>
+                    <label name="start_period"/>
+                    <field name="start_period"/>
+                    <label name="end_period"/>
+                    <field name="end_period"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_general_ledger">
+            <field name="name">Print General Legder</field>
+            <field name="wiz_name">account.account.print_general_ledger</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_print_general_ledger"
+            id="menu_print_general_ledger" icon="tryton-print"/>
+
+        <record model="ir.action.report" id="report_general_ledger">
+            <field name="name">General Ledger</field>
+            <field name="model"></field>
+            <field name="report_name">account.account.general_ledger</field>
+            <field name="report">account/general_ledger.odt</field>
+        </record>
+
+        <record model="ir.ui.view" id="print_trial_balance_init_view_form">
+            <field name="model">account.account.print_trial_balance.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Print Trial Balance">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <label name="empty_account"/>
+                    <field name="empty_account"/>
+                    <label name="start_period"/>
+                    <field name="start_period"/>
+                    <label name="end_period"/>
+                    <field name="end_period"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_print_trial_balance">
+            <field name="name">Print Trial Balance</field>
+            <field name="wiz_name">account.account.print_trial_balance</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_print_trial_balance"
+            id="menu_print_trial_balance" icon="tryton-print"/>
+
+        <record model="ir.action.report" id="report_trial_balance">
+            <field name="name">Trial Balance</field>
+            <field name="model"></field>
+            <field name="report_name">account.account.trial_balance</field>
+            <field name="report">account/trial_balance.odt</field>
+        </record>
+
+        <record model="ir.ui.view" id="open_balance_sheet_init_view_form">
+            <field name="model">account.account.open_balance_sheet.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Balance Sheet" col="2">
+                    <label name="date"/>
+                    <field name="date"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_balance_sheet_view_tree">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Balance Sheet">
+                    <field name="name"/>
+                    <field name="amount"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
+            <field name="name">Balance Sheet</field>
+            <field name="res_model">account.account.type</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('balance_sheet', '=', True)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_balance_sheet_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_balance_sheet_view_tree"/>
+            <field name="act_window" ref="act_account_balance_sheet_tree"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_open_balance_sheet">
+            <field name="name">Open Balance Sheet</field>
+            <field name="wiz_name">account.account.open_balance_sheet</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_open_balance_sheet"
+            id="menu_open_balance_sheet" icon="tryton-tree"
+            name="Balance Sheet"/>
+
+        <record model="ir.ui.view" id="open_income_statement_init_view_form">
+            <field name="model">account.account.open_income_statement.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Income Statement">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <newline/>
+                    <label name="start_period"/>
+                    <field name="start_period"/>
+                    <label name="end_period"/>
+                    <field name="end_period"/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="account_income_statement_view_tree">
+            <field name="model">account.account.type</field>
+            <field name="type">tree</field>
+            <field name="field_childs">childs</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <tree string="Income Statement">
+                    <field name="name"/>
+                    <field name="amount"/>
+                </tree>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.act_window" id="act_account_income_statement_tree">
+            <field name="name">Income Statement</field>
+            <field name="res_model">account.account.type</field>
+            <field name="view_type">tree</field>
+            <field name="domain">[('income_statement', '=', True)]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_income_statement_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account_income_statement_view_tree"/>
+            <field name="act_window" ref="act_account_income_statement_tree"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_open_income_statement">
+            <field name="name">Open Income Statement</field>
+            <field name="wiz_name">account.account.open_income_statement</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_open_income_statement"
+            id="menu_open_income_statement" icon="tryton-tree"
+            name="Income Statement"/>
+
+        <record model="ir.ui.view" id="open_third_party_balance_init_view_form">
+            <field name="model">account.account.open_third_party_balance.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Third Party Balance" col="4">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <newline/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.report" id="report_third_party_balance">
+            <field name="name">Third Party Balance</field>
+            <field name="model"></field>
+            <field name="report_name">account.account.third_party_balance</field>
+            <field name="report">account/third_party_balance.odt</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_open_third_party_balance">
+            <field name="name">Open Third Party Balance</field>
+            <field name="wiz_name">account.account.open_third_party_balance</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_open_third_party_balance"
+            id="menu_third_party_balance" icon="tryton-print"
+            name="Third Party Balance"/>
+
+        <record model="ir.ui.view" id="open_aged_balance_init_view_form">
+            <field name="model">account.account.open_aged_balance.init</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="Open Aged Balance" col="4">
+                    <label name="fiscalyear"/>
+                    <field name="fiscalyear"/>
+                    <newline/>
+                    <label name="balance_type"/>
+                    <field name="balance_type"/>
+                    <newline/>
+                    <label name="company"/>
+                    <field name="company"/>
+                    <label name="posted"/>
+                    <field name="posted"/>
+                    <separator string="Terms" colspan="4" id="terms"/>
+                    <label name="term1"/>
+                    <field name="term1"/>
+                    <newline/>
+                    <label name="term2"/>
+                    <field name="term2"/>
+                    <newline/>
+                    <label name="term3"/>
+                    <field name="term3"/>
+                    <label name="unit"/>
+                    <field name="unit"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.action.report" id="report_aged_balance">
+            <field name="name">Aged Balance</field>
+            <field name="model"></field>
+            <field name="report_name">account.account.aged_balance</field>
+            <field name="report">account/aged_balance.odt</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_open_aged_balance">
+            <field name="name">Open Aged Balance</field>
+            <field name="wiz_name">account.account.open_aged_balance</field>
+        </record>
+        <menuitem parent="menu_reporting" action="wizard_open_aged_balance"
+            id="menu_aged_balance" icon="tryton-print"
+            name="Aged Balance"/>
+
+    </data>
+</tryton>

@@ -1,1 +1,42 @@
-/home/trytond-1.8.2/trytond/modules/ekd_budget/xml/ekd_system.xml
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+<!-->
+        <record model="ir.dictions"
+            id="000">
+            <field name="key"></field>
+            <field name="value"></field>
+            <field name="model"></field>
+            <field name="pole"></field>
+        </record>
+<-->
+        <record model="ir.dictions"
+            id="request_ref_budget">
+            <field name="key">ekd.account.budget</field>
+            <field name="value">Budget</field>
+            <field name="model">ekd.document.head.request</field>
+            <field name="pole">document_ref</field>
+        </record>
+
+        <record model="ir.dictions"
+            id="type_analytic_budget">
+            <field name="key">ekd.account.budget</field>
+            <field name="value">Budget</field>
+            <field name="model">ekd.account.level_analytic</field>
+            <field name="pole">type_analytic</field>
+            <field name="sequence">010</field>
+        </record>
+
+        <record model="ir.dictions"
+            id="type_analytic_budget_line">
+            <field name="key">ekd.account.budget.line</field>
+            <field name="value">Budget Items</field>
+            <field name="model">ekd.account.level_analytic</field>
+            <field name="pole">type_analytic</field>
+            <field name="sequence">012</field>
+        </record>
+
+    </data>
+</tryton>

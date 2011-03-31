@@ -1,1 +1,80 @@
-/home/trytond-1.8.2/trytond/modules/ekd_budget/xml/ekd_budget_line.xml
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="view_budget_line_form">
+            <field name="model">ekd.account.budget.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                <form string="" >
+                    <group col="8" id="total">
+                        <group id="first">
+                            <label name="analytic"/>
+                            <field name="analytic"/>
+                            <label name="sequence"/>
+                            <field colspan="1" name="sequence"/>
+                            <newline/>
+                            <label name="name"/>
+                            <field name="name"/>
+                        </group>
+                        <newline/>
+                        <group col="6" id="second">
+                            <label name="direct_line"/>
+                            <field colspan="1" name="direct_line"/>
+                            <label name="type_line"/>
+                            <field colspan="1" name="type_line"/>
+                            <label name="kind"/>
+                            <field colspan="1" name="kind"/>
+                        </group>
+                        <newline/>
+                        <group col="4" id="second">
+                            <label name="code"/>
+                            <field colspan="1" name="code_section"/>
+                            <field colspan="1" name="code"/>
+                            <label name="uom"/>
+                            <field name="uom"/>
+                            <label name="quantity"/>
+                            <field name="quantity"/>
+                            <label name="price_unit"/>
+                            <field name="price_unit"/>
+                            <label name="currency"/>
+                            <field name="currency"/>
+                            <label name="amount"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                    <field name="unit_digits" invisible="1"/>
+                </form>
+                ]]>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_budget_line_tree">
+            <field name="model">ekd.account.budget.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <![CDATA[
+                    <tree string="Lines Budget" fill="1"
+                        colors="If(Equal(Eval('type_line'), 'section'),'blue',If(Equal(Eval('type_line'), 'subtotal'),'magenta',If(And(Equal(Eval('direct_line'), 'expense'),(Equal(Eval('type_line'), 'line'))),'red','black')))">
+                        <field name="sequence" tree_invisible="1"/>
+                        <field name="direct_line" tree_invisible="1"/>
+                        <field name="project"/>
+                        <field name="budget"/>
+                        <field name="code_section"/>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="quantity"/>
+                        <field name="uom"/>
+                        <field name="price_unit"/>
+                        <field name="amount"/>
+                        <field name="currency" tree_invisible="1"/>
+                        <field name="analytic"/>
+                        <field name="kind" tree_invisible="1"/>
+                        <field name="type_line" tree_invisible="1"/>
+                        <field name="unit_digits" tree_invisible="1"/>
+                    </tree>
+                ]]>
+            </field>
+        </record>
+    </data>
+</tryton>
